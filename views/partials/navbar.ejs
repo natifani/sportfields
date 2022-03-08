@@ -1,0 +1,41 @@
+<!-- Nagy Tifani Franciska 523 ntim1937 -->
+
+<header>
+  <nav id="navbar">
+    <div class="nav-container">
+      <div id="title">SPORTSAPP</div>
+      <ul>
+        <li><a class="navbar-a" href="index.html">MAIN PAGE</a></li>
+        <li><a class="navbar-a" href="sportfields.html">CHECK FIELDS</a></li>
+        <% if (payload.role === 'admin') { %>
+          <li><a class="navbar-a" href="admin_form_create_field.html">CREATE FIELD</a></li>
+        <% } %>
+        <% if (payload.role === 'user') { %>
+          <li><a class="navbar-a" href="client_form.html">RESERVE FIELD</a><li>
+        <% } %>
+        <% if (payload.role === 'user') { %>
+          <li><a class="navbar-a" href="client_reservations.html">MY RESERVATIONS</a><li>
+        <% } %>
+        <% if (payload.role === 'user') { %>
+          <li><a class="navbar-a" href="edit_profile.html">EDIT PROFILE</a></li>
+        <% } %>
+        <% if (payload.role === 'admin') { %>
+          <li><a class="navbar-a" href="check_reservations.html">CHECK RESERVATIONS</a></li>
+        <% } %>
+        <% if (payload.role === 'admin') { %>
+          <li><a class="navbar-a" href="check_users.html">CHECK USERS</a></li>
+        <% } %>
+        <% if (!payload.username) { %>
+          <li><a class="navbar-a" href="login_form.html">LOGIN</a></li>
+        <% } else { %>
+          <li><a class="navbar-a" href='/logout'>LOGOUT</a></li>
+        <% } %>
+        <% if (payload.username) { %>
+          <li><span id="username-span"><%=username%></span></li>
+        <% } else { %>
+          <li><a class="navbar-a" href="registration_form.html">SIGN UP</a></li>
+        <% } %>
+      </ul>
+    </div>
+  </nav>
+</header>

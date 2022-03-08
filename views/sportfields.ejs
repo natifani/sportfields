@@ -1,0 +1,88 @@
+<!-- Nagy Tifani Franciska 523 ntim1937 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../views/partials/head.ejs", { title: "Sport Fields" }) %>
+<body>
+    <%- include("../views/partials/navbar.ejs", { username: username })%>
+    <h2>AVAILABLE FIELDS</h2>
+    <div class="filter-and-sort-fields">
+      <div>SEARCH</div>
+      <input class="text-input" type="text" id="fieldname-input" placeholder="Search by field name..."/>
+      <button id="search-btn">SEARCH</button>
+      <div>FILTER BY</div>
+      <select id="filter-field-select">
+        <option value="all">Show all</option>
+        <option value="type">Type</option>
+        <option value="wage">Wage</option>
+        <option value="others">Other information</option>
+      </select>
+      <button id="filter-btn">FILTER</button>
+      <div>SORT BY</div>
+      <select id="sort-fields-select">
+        <option value="name">Name</option>
+        <option value="wage">Wage</option>
+        <option value="reserv">Number of reservations</option>
+      </select>
+      <i class="fa fa-sort-asc" id="asc-btn"></i>
+      <i class="fa fa-sort-desc" id="desc-btn"></i>
+    </div>
+    <div id="filter-elements-div"></div>
+    <div class="main">
+        <div id="container">
+            <% if (message.includes('Unable to load data') || message.includes('No match.')) { %>
+                <div class="field">
+                  <%=message%>
+                </div>
+            <% } else if (fields.length === 0) { %>
+                <div class="field">
+                  No field found. Come back later!
+                </div>
+            <% } %>
+            <% fields.forEach(field => { %>
+              <div class="field">
+                <div>
+                  <span>NAME</span>
+                  <br>
+                  <%=field.name%>
+                </div>
+                <div>
+                   <span>TYPE</span>
+                   <br>
+                   <%=field.fieldType%>
+                </div>
+                <% if (field.image !== null) { %>
+                  <div>
+                    <span>IMAGES</span>
+                      <div class="image">
+                          <img src="/<%=field.image%>" alt="Image of field." />
+                      </div>
+                  </div>
+                <% } %>
+                <div>
+                  <a href="field_details.html?fid=<%=field.fieldID%>">CHECK DETAILS</a>
+                  <% if (payload.role) { %> 
+                    <br>
+                    <a id="<%=field.fieldID%>-load-reserv" href="#" onclick="loadReservations(`<%=field.fieldID%>`, `<%=payload.username%>`, `<%=payload.role%>`)">CHECK RESERVATIONS</a>
+                    <div id="<%=field.fieldID%>-err-div"></div>
+                    <table id="<%=field.fieldID%>-list-reserv"></table>
+                    <a class="edit-a" id="<%=field.fieldID%>-load-more-reserv-a" href="#" style="display: none">Load more</a>
+                    <table id="<%=field.fieldID%>-list-recurrent-reserv"></table>
+                    <a class="edit-a" id="<%=field.fieldID%>-load-more-recurrent-reserv-a" href="#" style="display: none">Load more</a>
+                  <% } %>
+                </div>
+              </div>
+            <% }) %>
+        </div>
+    </div>
+    <script src="sportfields_page.js">
+    </script>
+    <script src="sportfields_page_filter_search.js">
+    </script>
+    <footer class="paging-footer">
+      <button class="paging-btn" id="first-page"><i class="fa fa-angle-double-left"></i></button>
+      <button class="paging-btn" id="prev-page"><i class="fa fa-angle-left"></i></button>
+      <button class="paging-btn" id="next-page"><i class="fa fa-angle-right"></i></button>
+    </footer>
+</body>
+</html>

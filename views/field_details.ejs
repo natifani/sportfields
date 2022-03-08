@@ -1,0 +1,69 @@
+<!-- Nagy Tifani Franciska 523 ntim1937 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../views/partials/head.ejs", { title: "Field Details" }) %>
+<body>
+    <%- include("../views/partials/navbar.ejs") %>
+    <div class="main">
+        <% if (message.includes('Unable to load data') || message.includes('Unable to insert data')) { %>
+          <div> <%=message%> </div>
+        <% } else { %>
+          <h1><%=field.name%></h1>
+          <div class="field">
+            <div>
+              <span>TYPE</span>
+              <br>
+              <%=field.fieldType%>
+          </div>
+          <div>
+            <span>HOURLY WAGE</span>
+            <br>
+            <%=field.wage%> &pound
+          </div>
+          <div>
+            <span>DESCRIPTION</span>
+            <br>
+            <%=field.fieldDescription%>
+          </div>
+          <div>
+            <span>IMAGES</span>
+            <br>
+            <% if (images.length === 0) { %>
+              <div class="image">
+                No images available. Come back later!
+              </div>
+          <% } else { %>
+            <% images.forEach(img => { %>
+            <div class="image">
+                <img src="/<%=img.imageName%>" alt="Image of field." />
+            </div>
+            <% }) %>
+          <% } %>
+          </div>
+          <div>
+            <span>OTHER INFORMATION</span>
+            <br>
+            <% if (field.isIndoor === 1) { %>
+              <i class="fa fa-check" aria-hidden="true"></i>Indoor field
+            <% } else { %>
+              <i class="fa fa-check" aria-hidden="true"></i>Outdoor field
+            <% } %>
+          </div>
+          </div>
+          <% if (payload.role === 'admin') { %>
+            <div id="upload-img-div">
+              <span>UPLOAD IMAGES</span>
+              <form method="POST" action="/upload_images_form?fid=<%=field.fieldID%>" enctype="multipart/form-data"> 
+                  <input type="file" name="images" id="file-input" accept="image/*" multiple/>
+                  <input type="submit" value="UPLOAD" id="sf-uploadbtn" />
+              </form>
+          </div>
+          <% } %>
+          <% if (message) { %>
+            <div><%=message%></div>
+          <% } %>
+        <% } %>
+    </div>
+</body>
+</html>

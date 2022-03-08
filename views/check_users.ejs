@@ -1,0 +1,70 @@
+<!-- Nagy Tifani Franciska 523 ntim1937 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../views/partials/head.ejs", { title: "Users" }) %>
+<body>
+    <%- include("../views/partials/navbar.ejs", { username: username })%>
+    <h2>USERS</h2>
+    <div class="filter-and-sort-fields">
+      <div>FILTER BY</div>
+      <input class="text-input" type="checkbox" id="not-approved-cb"/>
+      <label>Not approved users</label>
+      <input class="text-input" type="checkbox" id="blocked-cb"/>
+      <label>Blocked users</label>
+      <input class="text-input" type="checkbox" id="unblocked-cb"/>
+      <label>Unblocked users</label>
+      <input class="text-input" type="checkbox" id="all-cb"/>
+      <label>All users</label>
+    </div>
+    <div class="main">
+      <div id="user-err-div"></div>
+      <div id="container">
+        <% if (message.includes('Unable to load data') || message.includes('No match.')) { %>
+          <div class="field">
+            <%=message%>
+          </div>
+        <% } else if (users.length === 0) { %>
+          <div class="field">
+            No more to show.
+          </div>
+        <% } %>            
+            <% users.forEach(user => { %>
+              <div class="field" id="<%=user.userID%>-field-div">
+                <div>
+                    <span>USERNAME</span>
+                    <br>
+                    <%=user.userName%>
+               </div>
+               <br>
+               <% if (user.role === 'user') { %>
+                <% if (user.blocked == 0) { %>
+                  <i class="fa fa-close"></i>
+                  <a class="client-reservation-page-a" href="#" onclick="setblockedFieldUser(`<%=user.userID%>`, `<%=user.userName%>`, 1)">BLOCK</a>
+                <% } else { %>
+                  <i class="fa fa-check"></i>
+                  <a class="client-reservation-page-a" href="#" onclick="setblockedFieldUser(`<%=user.userID%>`, `<%=user.userName%>`, 0)">UNBLOCK</a>
+                <% } %>
+                <br>
+               <% } %>
+               <% if (user.role === 'guest') { %>
+                <i class="fa fa-check"></i>
+                <a class="client-reservation-page-a" href="#" onclick="acceptUser(`<%=user.userID%>`, `<%=user.userName%>`)">ACCEPT</a>
+                <i class="fa fa-close"></i>
+                <a class="client-reservation-page-a" href="#" onclick="rejectUser(`<%=user.userID%>`, `<%=user.userName%>`)">REJECT</a>
+                <br>
+               <% } %>
+               <a class="client-reservation-page-a" href="user_details.html?un=<%=user.userName%>">CHECK USER DETAILS</a>
+               <div id="<%=user.userID%>-error-div"></div>
+              </div>
+            <% }) %>
+        </div>
+    </div>
+    <script src="check_users.js"></script>
+    <footer class="paging-footer">
+      <button class="paging-btn" id="first-page"><i class="fa fa-angle-double-left"></i></button>
+      <button class="paging-btn" id="prev-page"><i class="fa fa-angle-left"></i></button>
+      <button class="paging-btn" id="next-page"><i class="fa fa-angle-right"></i></button>
+    </footer>
+</body>
+</html>

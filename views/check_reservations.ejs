@@ -1,0 +1,93 @@
+<!-- Nagy Tifani Franciska 523 ntim1937 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../views/partials/head.ejs", { title: "Reservations" }) %>
+<body>
+    <%- include("../views/partials/navbar.ejs", { username: username })%>
+    <h2>RESERVATIONS</h2>
+    <div class="filter-and-sort-fields">
+        <div>SEARCH</div>
+        <input class="text-input" type="text" id="admin-username-input" placeholder="Search by username..."/>
+        <button id="admin-username-search-btn">SEARCH</button>
+        <div>SEARCH</div>
+        <input class="text-input" type="text" id="admin-fieldname-input" placeholder="Search by field name..."/>
+        <button id="admin-fieldname-search-btn">SEARCH</button>
+        <div>FILTER BY</div>
+        <select id="admin-filter-field-select">
+          <option value="all">Show all</option>
+          <option value="interval">Interval type date</option>
+          <option value="recurrent">Recurrent type date</option>
+        </select>
+        <button id="admin-filter-btn">FILTER</button> 
+    </div>
+    <div id="filter-elements-div"></div>
+    <div class="main">
+      <div id="client-reservation-err-div"></div>
+      <div id="container">
+        <% if (message.includes('Unable to load data') || message.includes('No match.')) { %>
+          <div class="field">
+            <%=message%>
+          </div>
+        <% } else if (fields.length === 0) { %>
+          <div class="field">
+            No more to show.
+          </div>
+        <% } %>            
+            <% fields.forEach(field => { %>
+              <div class="field" id="<%=field.reservID%>-field-div">
+                <div>
+                    <span>USERNAME</span>
+                    <br>
+                    <%=field.userName%>
+                </div>
+                <div>
+                  <span>FIELD NAME</span>
+                  <br>
+                  <%=field.name%>
+                </div>
+                <div>
+                  <span>RESERVATION TIME</span>
+                  <br>
+                  <% if (field.startDate !== null && field.endDate !== null) { %>
+                    <table id="<%=field.reservID%>-list-reserv">
+                        <tr>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                        </tr>
+                        <tr>
+                            <td><%=field.startDate%></td>
+                            <td><%=field.endDate%></td>
+                        </tr>
+                    </table>
+                  <% } else { %>
+                    <table id="<%=field.reservID%>-list-recurrent-reserv">
+                        <tr>
+                            <th>Day</th>
+                            <th>Start Hour</th>
+                            <th>End Hour</th>
+                        </tr>
+                        <tr>
+                            <td><%=field.day%></td>
+                            <td><%=field.startHour%></td>
+                            <td><%=field.endHour%></td>
+                        </tr>
+                    </table>
+                  <% } %>
+                  
+               </div>
+               <a href="#" class="client-reservation-page-a" onclick="deleteReservation(`<%=field.reservID%>`)">DELETE</a>
+               <br>
+               <a class="client-reservation-page-a" href="field_details.html?fid=<%=field.fieldID%>">CHECK FIELD DETAILS</a>
+              </div>
+            <% }) %>
+        </div>
+    </div>
+    <script src="check_reservations.js"></script>
+    <footer class="paging-footer">
+      <button class="paging-btn" id="first-page"><i class="fa fa-angle-double-left"></i></button>
+      <button class="paging-btn" id="prev-page"><i class="fa fa-angle-left"></i></button>
+      <button class="paging-btn" id="next-page"><i class="fa fa-angle-right"></i></button>
+    </footer>
+</body>
+</html>

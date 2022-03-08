@@ -1,0 +1,52 @@
+<!-- Nagy Tifani Franciska 523 ntim1937 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../views/partials/head.ejs", { title: "Sport Fields" }) %>
+<body onload="loadUsersReservationsAndAddPaging(`<%=userName%>`)">
+    <%- include("../views/partials/navbar.ejs", { username: username })%>
+    <h2>RESERVATIONS</h2>
+    <div class="main">
+      <div id="client-reservation-err-div"></div>
+      <div id="container">
+        <% if (message.includes('Unable to load data') || message.includes('No match.')) { %>
+          <div class="field">
+            <%=message%>
+          </div>
+        <% } else if (fields.length === 0) { %>
+          <div class="field">
+            No more to show.
+          </div>
+        <% } %>            
+            <% fields.forEach(field => { %>
+              <div class="field" id="<%=field.reservID%>-field-div">
+                <div>
+                  <span>NAME</span>
+                  <br>
+                  <%=field.name%>
+                </div>
+                <div>
+                   <span>TYPE</span>
+                   <br>
+                   <%=field.fieldType%>
+                </div>
+                <div>
+                  <span>RESERVATION TIME</span>
+                  <br>
+                  <table id="<%=field.reservID%>-list-reserv"></table>
+               </div>
+               <a href="#" class="client-reservation-page-a" onclick="deleteReservation(`<%=field.reservID%>`)">DELETE</a>
+               <br>
+               <a class="client-reservation-page-a" href="field_details.html?fid=<%=field.fieldID%>">CHECK FIELD DETAILS</a>
+              </div>
+            <% }) %>
+        </div>
+    </div>
+    <script src="client_reservations.js"></script>
+    <footer class="paging-footer">
+      <button class="paging-btn" id="first-page"><i class="fa fa-angle-double-left"></i></button>
+      <button class="paging-btn" id="prev-page"><i class="fa fa-angle-left"></i></button>
+      <button class="paging-btn" id="next-page"><i class="fa fa-angle-right"></i></button>
+    </footer>
+</body>
+</html>

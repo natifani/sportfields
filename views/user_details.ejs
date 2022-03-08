@@ -1,0 +1,63 @@
+<!-- Nagy Tifani Franciska 523 ntim1937 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../views/partials/head.ejs", { title: "User Details" }) %>
+<body>
+    <%- include("../views/partials/navbar.ejs") %>
+    <div class="main">
+        <% if (message.includes('Unable to load data') || message.includes('Unable to insert data')) { %>
+          <div> <%=message%> </div>
+        <% } else { %>
+          <h2>USER PROFILE</h2>
+          <div class="field">
+          <div>
+              <span>EMAIL</span>
+              <br>
+              <%=user.email%>
+          </div>
+          <div>
+            <span>USERNAME</span>
+            <br>
+            <%=user.userName%>
+        </div>
+          <div>
+            <span>NAME</span>
+            <br>
+            <% if (user.name) { %>
+              <%=user.name%>
+            <% } else { %>
+              -
+            <% } %>
+          </div>
+          <div>
+            <span>DATE OF BIRTH</span>
+            <br>
+            <% if (user.birthDate) { %>
+              <%=user.birthDate%>
+            <% } else { %>
+              -
+            <% } %>
+          </div>
+          <div>
+            <span>EDUCATION INSTITUTE</span>
+            <br>
+            <% if (user.education) { %>
+              <%=user.education%>
+            <% } else { %>
+              -
+            <% } %>
+          </div>
+          <div>
+            <span>ROLE</span>
+            <br>
+            <%=user.role%>
+          </div>
+          </div>
+          <% if (message) { %>
+            <div><%=message%></div>
+          <% } %>
+        <% } %>
+    </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+# Node.js
+# Build a general Node.js project with npm.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+  - main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: "10.x"
+    displayName: "Install Node.js"
+
+  - script: |
+      npm install
+    displayName: "npm install"
+
+  - script: |
+      npm run lint
+    displayName: "npm run lint"
+    continueOnError: true
+
+  - script: |
+      curl https://cli-assets.heroku.com/install-ubuntu.sh | bash
+    displayName: "Install Heroku CLI"
+
+  - script: |
+      docker build -t registry.heroku.com/sportfieldsapp/web .
+    displayName: "Build docker image"
+
+  - script: |
+      docker login -u $(HEROKU_USER) -p $(HEROKU_PASSWORD) registry.heroku.com
+    displayName: "Login to heroku registry"
+
+  - script: |
+      docker push registry.heroku.com/sportfieldsapp/web
+    displayName: "Push image to heroku"
+
+  - script: |
+      docker run --rm -e HEROKU_API_KEY=$(HEROKU_PASSWORD) wingrunr21/alpine-heroku-cli container:release web --app sportfieldsapp
+    displayName: "Start the app on heroku"

@@ -1,0 +1,43 @@
+<!-- Nagy Tifani Franciska 523 ntim1937 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../views/partials/head.ejs", { title: "Create Sports Field" }) %>
+<body>
+    <%- include("../views/partials/navbar.ejs")%>
+    <div class="main">
+        <h1>CREATE SPORTS FIELD</h1>
+        <% if (message.includes('Unable to insert data')) { %>
+            <div> <%=message%> </div>
+        <% } else { %>
+            <form method="POST" action="/create_field_form" enctype="multipart/form-data"> 
+                <label class="sf-form-label">FIELD TYPE</label>
+                <select name="type">
+                    <option value="football">FOOTBALL</option>
+                    <option value="basketball">BASKETBALL</option>
+                    <option value="tennis">TENNIS</option>
+                    <option value="gymnastics">GYMNASTICS</option>
+                    <option value="volleyball">VOLLEYBALL</option>
+                    <option value="golf">GOLF</option>
+                    <option value="handball">HANDBALL</option>
+                    <option value="badminton">BADMINTON</option>
+                    <option value="baseball">BASEBALL</option>
+                </select>
+                <label class="sf-form-label">HOURLY WAGE</label>
+                <input class="text-input" type="text" name="wage" pattern="^[1-9]+[0-9]*(\.[0-9])*[0-9]*$" required/>
+                <label class="sf-form-label">FIELD NAME</label>
+                <input class="text-input" type="text" name="address" required/>
+                <label class="sf-form-label">OTHER INFORMATION</label>
+                <input type="checkbox" name="indoor" id="indoor-field-cb">
+                <label>Indoor field</label>
+                <label class="sf-form-label">DESCRIPTION</label>
+                <textarea name="description" rows="10" cols="40"></textarea>
+                <input type="submit" value="CREATE" id="sf-submitbtn" />
+            </form>
+            <% if (message) { %>
+                <div><%=message%></div>
+            <% } %>
+        </div>
+    <% } %>
+</body>
+</html>

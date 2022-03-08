@@ -1,0 +1,23 @@
+<!-- Nagy Tifani Franciska 523 ntim1937 -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("../views/partials/head.ejs", { title: "Login" }) %>
+  <body>
+    <%- include("../views/partials/navbar.ejs") %>
+    <div class="main">
+      <h1>LOGIN</h1>
+      <form method="POST" action="/login_form" enctype="multipart/form-data">
+        <label class="sf-form-label">USERNAME</label>
+        <input class="text-input" type="text" name="clusername" required/>
+        <label class="sf-form-label">PASSWORD</label>
+        <input class="text-input" type="password" name="clpassword" required/>
+        <input type="submit" value="LOGIN" id="sf-loginbtn" />
+      </form>
+      <a id="sign-up-btn" href="registration_form.html">SIGN UP</a>
+      <% if (message) { %>
+        <div><%=message%></div>
+      <% } %>
+    </div>
+  </body>
+</html>

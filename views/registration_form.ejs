@@ -1,0 +1,32 @@
+<!-- Nagy Tifani Franciska 523 ntim1937 -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("../views/partials/head.ejs", { title: "Sign up" }) %>
+  <body>
+    <%- include("../views/partials/navbar.ejs") %>
+    <div class="main">
+      <h1>SIGN UP</h1>
+      <% if (message) { %>
+        <div><%=message%></div>
+      <% } %>
+      <form method="POST" action="/registration_form" enctype="multipart/form-data">
+        <label class="sf-form-label">EMAIL</label>
+        <input class="text-input" type="text" name="clemail" pattern="^[^\s@]+@(yahoo|gmail|example)\.[^\s@]+$" required/>
+        <label class="sf-form-label">USERNAME</label>
+        <input class="text-input" type="text" name="clusername" pattern="^[^A-Z\s]+$" required/>
+        <label class="sf-form-label">NAME</label>
+        <input class="text-input" type="text" name="clname" required/>
+        <label class="sf-form-label">DATE OF BIRTH</label>
+        <input class="text-input" type="date" name="clbirthdate"/>
+        <label class="sf-form-label">EDUCATION INSTITUTE</label>
+        <input class="text-input" type="text" name="cleducation"/>
+        <label class="sf-form-label">PASSWORD</label>
+        <input class="text-input" type="password" name="clpassword" required/>
+        <label class="sf-form-label">REPEAT PASSWORD</label>
+        <input class="text-input" type="password" name="clpasswordrepeat" required/>
+        <input type="submit" value="SIGN UP" id="sf-signupbtn" />
+      </form>
+    </div>
+  </body>
+</html>

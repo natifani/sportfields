@@ -1,0 +1,65 @@
+<!-- Nagy Tifani Franciska 523 ntim1937 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../views/partials/head.ejs", { title: "Sport Heroes And CO" }) %>
+<body>
+    <%- include("../views/partials/navbar.ejs")%>
+    <div class="main">
+      <h1>EDIT PROFILE</h1>
+        <label class="edit-profile-label">NAME</label>
+        <div id="edit-name-div">
+          <input class="text-input" type="text" id="edit-name-input"></input>
+          <br>
+          <a class="edit-a" href="#" onclick="saveName(`<%=user.userName%>`)">Save name</a>
+          <div id="edit-name-message"></div>
+        </div>
+        <div id="view-name-div">
+          <div class="view-div" id="name-div">
+            <%=user.name%>
+          </div>
+          <a class="edit-a" id="edit-name-a" href="#">Edit name</a>
+        </div>
+        <label class="edit-profile-label">DATE OF BIRTH</label>
+        <div id="edit-birthdate-div">
+          <input class="text-input" type="date" id="edit-birthdate-input"></input>
+          <br>
+          <a class="edit-a" href="#" onclick="saveBirthdate(`<%=user.userName%>`)">Save date of birth</a>
+          <div id="edit-birthdate-message"></div>
+        </div>
+        <div id="view-birthdate-div">
+          <div class="view-div" id="birthdate-div">
+            <% if (user.birthDate !== null) { %>
+              <%=user.birthDate%>
+            <% } else { %>
+              -
+            <% } %>   
+          </div>
+          <a class="edit-a" id="edit-birthdate-a" href="#">Edit date of birth</a>
+        </div>
+        
+        <label class="edit-profile-label">EDUCATION INSTITUTE</label>
+        <div id="edit-education-div">
+          <input class="text-input" type="text" id="edit-education-input"></input>
+          <br>
+          <a class="edit-a" href="#" onclick="saveInstitute(`<%=user.userName%>`)">Save education institute</a>
+          <div id="edit-institute-message"></div>
+        </div>
+        <div id="view-education-div">
+          <div class="view-div" id="education-div">
+            <% if (user.education !== null) { %>
+              <%=user.education%>
+            <% } else { %>
+              -
+            <% } %> 
+          </div>
+          <a class="edit-a" id="edit-education-a" href="#">Edit education institute</a>
+        </div>
+      <% if (message) { %>
+        <div><%=message%></div>
+      <% } %>
+    </div>
+    <script src="edit_profile.js">
+    </script>
+</body>
+</html>

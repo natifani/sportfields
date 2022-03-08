@@ -1,0 +1,366 @@
+/* Nagy Tifani - Franciska 523 ntim1937 */
+
+/* GENERAL ELEMENTS */
+
+* {
+    margin: 0;
+}
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.5em;
+    background-color: rgb(231, 227, 227);
+    color: rgb(53, 50, 50);
+}
+
+section {
+    padding-bottom: 20px;
+}
+
+h2 {
+    text-align: center;
+}
+
+input:not([type="submit"]), select {
+    margin-bottom: 5%;
+    width: 200px;
+    height: 30px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+   
+}
+
+a {
+    text-decoration: none;
+}
+
+textarea {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+table {
+    font-size: 20px;
+    text-align: center;
+    margin: 0 auto;
+    display: inline-block;
+}
+
+td, th {
+    padding: 15px;
+}
+
+img {
+    width: 80%;
+}
+
+/* CLASS ELEMENTS */
+
+div.main {
+    text-align: center;
+    margin: 0 30%;
+}
+
+
+/* field details */
+div.field {
+    text-align: center;
+    background-color: rgba(61, 148, 126, 0.548);
+    border: 2px;
+    border-style: groove;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+}
+
+div.field div {
+    margin: 15px;
+}
+
+div.field div span {
+    color: rgb(40, 100, 85);
+    font-weight: bolder;
+}
+
+div.field div a, .client-reservation-page-a {
+    color: rgb(40, 100, 85);
+    font-weight: bolder;
+    font-size: smaller;
+}
+
+.paging-footer {
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+}
+
+.paging-btn {
+    width: 2em;
+    height: 2em;
+}
+
+.filter-and-sort-fields {
+    display: flex;
+    justify-content: center;
+    column-gap: 1em;
+    margin: 1em;
+    height: 60px;
+}
+
+.text-input {
+    font-size: 1.2rem;
+    background-color: transparent;
+    outline: none;
+    border-bottom: solid rgb(53, 50, 50) 2px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    outline-style: none;
+}
+
+/* navbar */
+.nav-container {
+    color:rgb(231, 227, 227);
+    display: grid;
+    grid-template-columns: 6fr 10fr;
+    align-items: center;
+    font-size: smaller;
+}
+
+.nav-container ul {
+    list-style: none;
+    display: flex;
+}
+
+.nav-container ul li {
+    padding: 1.2rem;
+}
+
+.navbar-a:link {
+    color:rgb(231, 227, 227);
+    font-style: normal;
+}
+
+.navbar-a:visited {
+    color:rgb(231, 227, 227);
+    font-style: oblique;
+}
+
+.navbar-a:hover {
+    color:rgb(85, 196, 168);
+    font-style: italic;
+}
+
+.navbar-a:active {
+    color:rgb(231, 227, 227);
+    font-style: normal;
+}
+
+/* edit profile */
+.edit-profile-label {
+    display: block;
+    margin-top: 2em;
+    margin-bottom: 1em;
+}
+
+.edit-a:link {
+    color: rgb(37, 32, 32)
+}
+
+.edit-a:active {
+    color: rgb(37, 32, 32)
+}
+
+.edit-a:visited {
+    color: rgb(37, 32, 32)
+}
+
+.edit-a:hover {
+    color: rgb(85, 79, 79);
+    font-style: italic;
+}
+
+/* main page */
+.main-page-a:link {
+    color: rgb(48, 109, 83);
+}
+
+.main-page-a:active {
+    color: rgb(48, 109, 83);
+}
+
+.main-page-a:visited {
+    color: rgb(48, 109, 83);
+}
+
+.main-page-a:hover {
+    color: rgb(48, 109, 83);
+    font-style: italic;
+}
+
+.sf-form-label {
+    display: block;
+}
+
+.view-div {
+    border-bottom: solid rgb(53, 50, 50) 2px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    display: block;
+}
+
+.listbox-div {
+    padding: 20px;
+}
+
+.infos-subdiv {
+    padding-bottom: 20px;
+}
+
+/* ID ELEMENTS */
+
+/* reservation form */
+#reservations-ul {
+    margin-top: 10em;
+    margin: 1em;
+    padding: 0;
+    min-height: 10em;
+    border: 3px solid rgb(134, 132, 132);
+    background: rgb(199, 196, 196);
+    position: relative;
+    max-height: 10em;
+    overflow-y: auto;
+}
+
+#reservations-ul li {
+    position: relative;
+    display: block;
+    padding: 0 1em 0 1.5em;
+    line-height: 1.8em;
+  }
+  
+
+/* image upload */
+#upload-img-div span {
+    color: rgb(40, 100, 85);
+    font-weight: bolder;
+}
+
+#upload-img-div {
+    text-align: center;
+    background-color: rgba(61, 148, 126, 0.548);
+    border: 2px;
+    border-style: groove;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+}
+
+/* main page */
+#main-page-div {
+    display: flex;
+    justify-content: center;
+    margin: 0 30%;
+}
+
+#main-page-infos-div {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border: 2px;
+    border-style: groove;
+    border-radius: 12px;
+    text-align: center;
+    background-color: rgba(61, 148, 126, 0.548);
+    width: 55rem;
+    margin: 5em;
+}
+
+#welcome-div {
+    font-size: larger;
+    margin-bottom: 2rem;
+}
+
+#navbar {
+    background-color: rgb(35, 116, 116);
+    overflow: hidden;
+}
+
+#title {
+    font-weight: bolder;
+    font-size: 30px;
+    padding: 1.3em;
+    width: 250px;
+    height: 55px;
+}
+
+#main-page-img {
+    width: 100%;
+}
+
+/* filters */
+#search-btn, #filter-btn, #admin-username-search-btn, #admin-fieldname-search-btn, #admin-filter-btn {
+    height: 30px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: rgb(61, 148, 126);
+    color: rgb(231, 227, 227);
+}
+
+#asc-btn:hover {
+    color: rgb(50, 131, 111);
+}
+
+#desc-btn:hover {
+    color: rgb(50, 131, 111);
+}
+
+#indoor-field-cb {
+    margin-top: 2em;
+}
+
+#filter-elements-div {
+    text-align: center;
+}
+
+#filter-elements-div > * {
+    text-align: center;
+    margin: 15px;
+}
+
+#wage-label {
+    margin-right: 1em;
+}
+
+#wage-input {
+    margin-right: 1em;
+}
+
+#wage-btn, #clear-filter-btn, #date-btn {
+    margin-right: 1em;
+    height: 30px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: rgb(61, 148, 126);
+    color: rgb(231, 227, 227);
+}
+
+/* form buttons */
+#sf-submitbtn, #sf-uploadbtn, #sf-reservebtn, #sf-loginbtn, #sf-signupbtn {
+    border: none;
+    width: 90px;
+    height: 50px;
+    display: block;
+    padding: 10px;
+    margin: 100px auto;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: rgb(61, 148, 126);
+    color: rgb(231, 227, 227);
+}
+
+#sign-up-btn {
+    color:rgb(53, 50, 50);
+}
+
+#sign-up-btn:hover {
+    color:rgb(53, 50, 50);
+    font-style: italic;
+}
+

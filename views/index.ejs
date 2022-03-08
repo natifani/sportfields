@@ -1,0 +1,59 @@
+<!-- Nagy Tifani Franciska 523 ntim1937 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../views/partials/head.ejs", { title: "SportsApp - Main Page" }) %>
+<body>
+    <%- include("../views/partials/navbar.ejs")%>
+    <h2>WELCOME TO SPORTSAPP!</h2>
+    <div id="main-page-div">
+        <div id="main-page-infos-div">
+            <div id="welcome-div">
+                <% if (payload.username) { %>
+                    Hello <%=username%>!
+                <% } else { %>
+                    Hello!
+                <% } %>
+            </div>
+            <p id="infos-div">
+                <% if (payload.role === 'user' || payload.role === 'admin') { %>
+                    <% if (payload.role === 'user') { %>
+                        <div class="infos-subdiv">
+                            <a class="main-page-a" href="#">Check out</a> the newest fields added!
+                        </div>
+                        <div class="infos-subdiv">
+                            Plan your <a class="main-page-a" href="#">schedule</a> now!
+                        </div>
+                        <div class="infos-subdiv">
+                            Check your <a class="main-page-a" href="#">current reservations!</a>
+                        </div>       
+                    <% } else if (payload.role === 'admin') { %>
+                        <div class="infos-subdiv">
+                            <a class="main-page-a" href="#">Check out</a> the fields added!
+                        </div>
+                        <div class="infos-subdiv">
+                            Check all users <a class="main-page-a" href="#">schedule</a>!
+                        </div>
+                        <div class="infos-subdiv">
+                           <a class="main-page-a" href="#">Add new</a> fields!
+                        </div>
+                        <div class="infos-subdiv">
+                            Check all <a class="main-page-a" href="#">users</a>!
+                        </div>
+                    <% } %>                      
+                <% } else { %>
+                    <div class="infos-subdiv">
+                        <a class="main-page-a" href="#">Check out</a> the newest fields added!
+                    </div>
+                    <div class="infos-subdiv">
+                        If you already have an account, login in <a class="main-page-a" href="login_form.html">here</a>!
+                    </div>
+                    <div class="infos-subdiv">
+                        If you are new on this page, sign up <a class="main-page-a" href="registration_form.html">here</a>!
+                    </div>
+                <% } %>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
